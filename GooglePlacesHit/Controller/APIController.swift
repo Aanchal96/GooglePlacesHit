@@ -17,6 +17,7 @@ class APIController{
         let newStr = query.replacingOccurrences(of: " ", with: "+")
         let baseURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(newStr)&key=\(key)"
         
+        //MARK:--> Calling Network Manager
         NetworkController().getRequest(baseURL, headers){
             (data) in
             success(Attributes(data))

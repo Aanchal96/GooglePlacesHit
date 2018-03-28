@@ -10,6 +10,7 @@ import Foundation
 
 class NetworkController{
     
+    //MARK:--> GET Request
     func getRequest(_ url: String,_ headers: [String:String],_ success: @escaping ([String:Any])->Void){
         let request = NSMutableURLRequest(url: NSURL(string: url)! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         

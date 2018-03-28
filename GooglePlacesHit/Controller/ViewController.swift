@@ -10,18 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //MARK:--> Authentication key
+    fileprivate var key = "AIzaSyBXSZOOoR3kNLHEy1maOLnJzrUoGZRgAIM"
+    
+    //MARK:--> Variables Declaration
     var name:[String]=[]
     var address:[String]=[]
     var rating:[NSNumber]=[]
     var imageURLS:[String]=[]
+    var query = ""
     
+    //MARK:--> Outlets
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var noDataLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
-    var query = ""
-    fileprivate var key = "AIzaSyBXSZOOoR3kNLHEy1maOLnJzrUoGZRgAIM"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +40,6 @@ class ViewController: UIViewController {
 }
 
 //MARK: --> Search Bar Delegates
-
 extension ViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -61,6 +63,7 @@ extension ViewController: UISearchBarDelegate{
     }
 }
 
+//MARK:--> Fetching Response
 extension ViewController{
     func fetchResponce(_ query:String){
         tableView.isHidden = false
@@ -88,7 +91,6 @@ extension ViewController{
                     }
                     
                 }
-                
                 UIViewController.removeSpinner(spinner:spinner)
             }
         }
@@ -96,7 +98,6 @@ extension ViewController{
 }
 
 //MARK: --> Table view data source methods
-
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -122,7 +123,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 //MARK: --> Starting and stopping loader
-
 extension UIViewController {
     class func displaySpinner(onView : UIView) -> UIView {
         let spinnerView = UIView.init(frame: onView.bounds)
@@ -145,7 +145,6 @@ extension UIViewController {
 }
 
 //MARK: --> animations
-
 extension ViewController{
     func animate(){
         let cells = tableView.visibleCells
